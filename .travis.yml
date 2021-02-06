@@ -34,7 +34,9 @@ jobs:
         - tox -e $TOX_ENV
 
     - <<: *default
-      arch: arm64
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
       python: 3.7
       env: TOX_ENV=py37
 
@@ -75,7 +77,84 @@ jobs:
       env: TOX_ENV=with_jsonschema
 
     - <<: *default
+      python: 3.8
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      env: TOX_ENV=py38
+
+    - <<: *default
+      python: 3.9-dev
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      env: TOX_ENV=py39
+
+    - <<: *default
+      python: 3.6
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      env: TOX_ENV=py36
+
+    - <<: *default
+      python: 3.5
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      env: TOX_ENV=py35
+
+    - <<: *default
+      python: 2.7
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      env: TOX_ENV=py27
+
+    - <<: *default
+      python: pypy
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      env: TOX_ENV=pypy
+
+    - <<: *default
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+      env: TOX_ENV=with_ipython
+
+    - <<: *default
+      env: TOX_ENV=with_numpy
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+
+    - <<: *default
+      env: TOX_ENV=with_pandas
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+
+    - <<: *default
+      env: TOX_ENV=with_jsonschema
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
+
+
+    - <<: *default
       env: TOX_ENV=with_gmpy
+      addons:
+        apt:
+          packages:
+          - libgmp10
+          - libgmp-dev
+    - <<: *default
+      env: TOX_ENV=with_gmpy
+      arch: arm64-graviton2
+      virt: lxd
+      group: edge
       addons:
         apt:
           packages:
